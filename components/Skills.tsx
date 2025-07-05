@@ -135,13 +135,13 @@ export default function Skills() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
-            <motion.div
+          <motion.div
               key={category.name}
               initial={{ opacity: 1, y: 0 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 * index }}
               className="glass-card p-6 rounded-xl"
-            >
+          >
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center mr-4">
                   <div className="w-6 h-6 bg-white rounded-sm"></div>
@@ -149,11 +149,11 @@ export default function Skills() {
                 <h3 className="text-xl md:text-2xl font-bold gradient-text">{category.name}</h3>
               </div>
               
-              <div className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 1, x: 0 }}
+                <div className="space-y-4">
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 1, x: 0 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 * index + 0.05 * skillIndex }}
                   >
@@ -162,19 +162,19 @@ export default function Skills() {
                       <span className="text-sm text-purple-300">{skill.level}%</span>
                     </div>
                     <div className="w-full bg-white/10 rounded-full h-2">
-                      <motion.div
+                          <motion.div
                         className="h-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
-                        initial={{ width: `${skill.level}%` }}
+                            initial={{ width: `${skill.level}%` }}
                         animate={isInView ? { width: `${skill.level}%` } : { width: `${skill.level}%` }}
                         transition={{ duration: 1, delay: 0.1 * index + 0.1 * skillIndex }}
-                      />
-                    </div>
+                          />
+                        </div>
                   </motion.div>
                 ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
 
         <motion.div
           initial={{ opacity: 1, y: 0 }}
@@ -208,7 +208,7 @@ export default function Skills() {
               </div>
             </div>
           </div>
-        </motion.div>
+          </motion.div>
 
         {/* Certifications Section */}
         <motion.div

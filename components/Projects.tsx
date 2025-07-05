@@ -167,8 +167,8 @@ function ProjectCard({ project, index, featured = false, isInView }: { project: 
 
   return (
     <motion.div
-              ref={ref}
-        initial={{ opacity: 1, y: 0 }}
+      ref={ref}
+      initial={{ opacity: 1, y: 0 }}
         animate={cardInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.1 * index }}
       className={`glass-card rounded-xl overflow-hidden card-hover group ${

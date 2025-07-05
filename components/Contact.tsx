@@ -48,16 +48,16 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
-
+    
     // Simulate API call
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 2000));
       setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       setSubmitStatus('error');
     } finally {
-      setIsSubmitting(false);
+    setIsSubmitting(false);
     }
   };
 
@@ -106,11 +106,11 @@ export default function Contact() {
                   >
                     <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <info.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
+                  </div>
+                  <div>
                       <h4 className="text-lg font-semibold text-white">{info.title}</h4>
                       <p className="text-white/70">{info.value}</p>
-                    </div>
+                  </div>
                   </motion.a>
                 ))}
               </div>
@@ -124,7 +124,7 @@ export default function Contact() {
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                   className="flex items-center"
-                >
+            >
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
                   Full-stack web development
                 </motion.li>
@@ -156,7 +156,7 @@ export default function Contact() {
                   Technical consulting
                 </motion.li>
               </ul>
-            </div>
+              </div>
           </motion.div>
 
           {/* Contact Form */}
@@ -167,68 +167,68 @@ export default function Contact() {
             className="glass-card p-8 rounded-xl"
           >
             <h3 className="text-2xl md:text-3xl font-bold mb-6 gradient-text">Send Message</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
               <motion.div
                 initial={{ opacity: 1, y: 0 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
                 <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
                   onChange={handleInputChange}
-                  required
+                    required
                   className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                  placeholder="Your name"
-                />
+                    placeholder="Your name"
+                  />
               </motion.div>
-
+                
               <motion.div
                 initial={{ opacity: 1, y: 0 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
                   onChange={handleInputChange}
-                  required
+                    required
                   className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                  placeholder="your.email@example.com"
-                />
+                    placeholder="your.email@example.com"
+                  />
               </motion.div>
-
+                
               <motion.div
                 initial={{ opacity: 1, y: 0 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
                 <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
                   onChange={handleInputChange}
-                  required
-                  rows={5}
+                    required
+                    rows={5}
                   className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 resize-none"
                   placeholder="Tell me about your project or just say hello!"
-                />
+                  />
               </motion.div>
-
+                
               <motion.div
                 initial={{ opacity: 1, y: 0 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
@@ -261,7 +261,7 @@ export default function Contact() {
               )}
 
               {submitStatus === 'error' && (
-                <motion.div
+                      <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="flex items-center space-x-2 text-red-400 bg-red-400/10 p-3 rounded-lg"
@@ -270,7 +270,7 @@ export default function Contact() {
                   <span>Failed to send message. Please try again.</span>
                 </motion.div>
               )}
-            </form>
+              </form>
           </motion.div>
         </div>
       </div>

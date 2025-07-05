@@ -1,18 +1,38 @@
-'use client';
-
+"use client";
 import { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { ChevronDown, Code, Palette, Zap } from 'lucide-react';
-import { FloatingText } from '@/scenes/FloatingText';
-import { ParticleBackground, FloatingShapes } from '@/components/BackgroundAnimations';
+import { ChevronDown, Code, Palette, Zap, Github, Linkedin, Mail } from 'lucide-react';
+import { FloatingText } from '../scenes/FloatingText';
+import { ParticleBackground, FloatingShapes } from './BackgroundAnimations';
+import { TypeWriter } from './TypeWriter';
+import { LetterAssembly } from './LetterAssembly';
 
 export default function Hero() {
   const controls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isNameVisible, setIsNameVisible] = useState(true);
 
   useEffect(() => {
     controls.start({ opacity: 1, y: 0 });
   }, [controls]);
+
+  // Simple scroll detection to hide name
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      // Hide name if scrolled more than 50% of viewport height
+      if (scrollY > windowHeight * 0.5) {
+        setIsNameVisible(false);
+      } else {
+        setIsNameVisible(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToNext = () => {
     const element = document.getElementById('about');
@@ -33,257 +53,276 @@ export default function Hero() {
       </div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/5 via-transparent to-blue-900/5 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20 z-10" />
 
       {/* Content */}
-      <div ref={containerRef} className="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={controls}
-          transition={{ duration: 0.8 }}
-          className="mb-8"
-        >
+      <div ref={containerRef} className="relative z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-screen py-20">
+          
+          {/* Left Side - Photo Frame */}
           <motion.div
-            initial={{ scale: 1, opacity: 1 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="mb-6"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex justify-center lg:justify-start"
           >
-            <h1 className="font-bold font-poppins mb-6">
-              <motion.span 
-                className="block text-responsive-4xl md:text-responsive-5xl lg:text-responsive-6xl"
-                initial={{ y: 0, opacity: 1 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8 }}
+            <div className="relative">
+              {/* Photo Frame with Glow Effect */}
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                className="relative"
               >
-                Hi, I'm
-              </motion.span>
-              <motion.span 
-                className="block gradient-text text-responsive-4xl md:text-responsive-5xl lg:text-responsive-6xl"
-                initial={{ y: 0, opacity: 1 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8 }}
-              >
-                Archit Agarwal
-              </motion.span>
-            </h1>
+                {/* Outer Glow */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-2xl blur-xl opacity-30 animate-pulse" />
+                
+                {/* Frame */}
+                <div className="relative w-80 h-96 sm:w-96 sm:h-[450px] rounded-2xl overflow-hidden border-4 border-white/20 shadow-2xl">
+                  <motion.img
+                    src="/pic.jpg"
+                    alt="Archit Agarwal"
+                    className="w-full h-full object-cover"
+                    initial={{ scale: 1.2, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                  />
+                  
+                  {/* Hover Effect Overlay */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-purple-900/30 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"
+                    whileHover={{ opacity: 1 }}
+                  />
+                </div>
+
+                {/* Floating Elements around Photo */}
+                <motion.div
+                  animate={{
+                    y: [0, -20, 0],
+                    rotate: [0, 10, -10, 0],
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute -top-4 -left-4 w-8 h-8 bg-purple-500/30 rounded-full blur-sm"
+                />
+                <motion.div
+                  animate={{
+                    y: [0, 15, 0],
+                    rotate: [0, -10, 10, 0],
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute -bottom-6 -right-6 w-12 h-12 bg-blue-500/30 rounded-full blur-sm"
+                />
+                <motion.div
+                  animate={{
+                    y: [0, -10, 0],
+                    x: [0, 10, 0],
+                  }}
+                  transition={{
+                    duration: 7,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute top-1/2 -right-8 w-6 h-6 bg-pink-500/30 rounded-full blur-sm"
+                />
+                <motion.div
+                  animate={{
+                    y: [0, -15, 0],
+                    x: [0, -10, 0],
+                  }}
+                  transition={{
+                    duration: 9,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute top-1/4 -left-6 w-10 h-10 bg-cyan-500/30 rounded-full blur-sm"
+                />
+              </motion.div>
+            </div>
           </motion.div>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={controls}
-          transition={{ duration: 0.8 }}
-          className="mb-8"
-        >
-          <TypeWriter />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={controls}
-          transition={{ duration: 0.8 }}
-          className="mb-12"
-        >
-          <p className="text-responsive-lg md:text-responsive-xl max-w-4xl mx-auto leading-relaxed opacity-90">
-            Full Stack Developer crafting digital experiences with modern technologies and creative solutions.
-            Passionate about building scalable applications that make a difference.
-          </p>
-        </motion.div>
-
-        {/* Feature highlights */}
-        <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={controls}
-          transition={{ duration: 0.8 }}
-          className="flex flex-wrap justify-center gap-6 mb-12"
-        >
-          {[
-            { icon: Code, text: "Clean Code", color: "from-blue-500 to-cyan-500" },
-            { icon: Palette, text: "Creative Design", color: "from-purple-500 to-pink-500" },
-            { icon: Zap, text: "Performance", color: "from-yellow-500 to-orange-500" },
-          ].map((item, index) => (
+          {/* Right Side - Text Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-center lg:text-left"
+          >
+            {/* Greeting */}
             <motion.div
-              key={item.text}
-              initial={{ opacity: 1, scale: 1 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="glass-card px-6 py-3 flex items-center space-x-3 hover:scale-105 transition-transform duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="mb-4"
             >
-              <div className={`w-8 h-8 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center`}>
-                <item.icon className="w-4 h-4 text-white" />
-              </div>
-              <span className="font-medium text-responsive-sm">{item.text}</span>
+              <span className="text-purple-400 text-lg font-medium">Hello, I'm</span>
             </motion.div>
-          ))}
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={controls}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-          <motion.button
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-primary group"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className="relative z-10 text-responsive-sm">View My Work</span>
-          </motion.button>
-          <motion.button
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-secondary text-responsive-sm"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get In Touch
-          </motion.button>
-        </motion.div>
+            {/* Name with Letter Assembly Animation - Only visible on home page */}
+            {isNameVisible && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="mb-6"
+              >
+                <LetterAssembly
+                  text="Archit"
+                  className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white block mb-2"
+                  delay={0.8}
+                />
+                <LetterAssembly
+                  text="Agarwal"
+                  className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent block"
+                  delay={1.4}
+                />
+              </motion.div>
+            )}
+
+            {/* TypeWriter */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 2.5 }}
+              className="mb-6"
+            >
+              <TypeWriter
+                texts={[
+                  "Full Stack Developer",
+                  "React Specialist",
+                  "UI/UX Designer",
+                  "Problem Solver",
+                  "Creative Thinker",
+                  "Tech Enthusiast"
+                ]}
+                className="text-2xl sm:text-3xl font-medium text-purple-400 justify-center lg:justify-start"
+              />
+            </motion.div>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 2.7 }}
+              className="text-lg text-gray-300 leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0"
+            >
+              Full Stack Developer crafting digital experiences with modern technologies and creative solutions.
+              Passionate about building scalable applications that make a difference.
+            </motion.p>
+
+            {/* Feature highlights */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 2.9 }}
+              className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8"
+            >
+              {[
+                { icon: Code, text: "Clean Code", color: "from-blue-500 to-cyan-500" },
+                { icon: Palette, text: "Creative Design", color: "from-purple-500 to-pink-500" },
+                { icon: Zap, text: "Performance", color: "from-yellow-500 to-orange-500" },
+              ].map((item, index) => (
+                <motion.div
+                  key={item.text}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 3.0 + index * 0.1 }}
+                  className="backdrop-blur-sm bg-white/10 border border-white/20 rounded-full px-4 py-2 flex items-center space-x-2 hover:scale-105 transition-transform duration-300"
+                >
+                  <div className={`w-6 h-6 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center`}>
+                    <item.icon className="w-3 h-3 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-white">{item.text}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Action Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 3.2 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
+            >
+              <motion.button
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View My Work
+              </motion.button>
+              <motion.button
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-8 py-3 border-2 border-purple-400 text-purple-400 font-medium rounded-full hover:bg-purple-400 hover:text-white transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get In Touch
+              </motion.button>
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 3.5 }}
+              className="flex justify-center lg:justify-start gap-4"
+            >
+              {[
+                { icon: Github, href: "#", label: "GitHub" },
+                { icon: Linkedin, href: "#", label: "LinkedIn" },
+                { icon: Mail, href: "#", label: "Email" },
+              ].map((social, index) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  className="w-12 h-12 bg-white/10 border border-white/20 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-white/20 transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <social.icon className="w-5 h-5" />
+                </motion.a>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
       <motion.div
-        initial={{ opacity: 1, y: 0 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.5 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30"
       >
         <motion.button
           onClick={scrollToNext}
-          className="flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity group"
+          className="flex flex-col items-center text-white/60 hover:text-white/100 transition-colors group"
           whileHover={{ y: -5 }}
         >
-          <span className="text-responsive-xs mb-2 font-medium">Scroll Down</span>
+          <span className="text-sm mb-2 font-medium">Scroll Down</span>
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-6 h-10 border-2 border-current rounded-full flex justify-center opacity-30"
+            className="w-6 h-10 border-2 border-current rounded-full flex justify-center"
           >
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1 h-3 bg-current rounded-full mt-2 opacity-50"
+              className="w-1 h-3 bg-current rounded-full mt-2"
             />
           </motion.div>
         </motion.button>
       </motion.div>
-
-      {/* Floating Elements */}
-      <motion.div
-        animate={{
-          y: [0, -30, 0],
-          rotate: [0, 5, -5, 0],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-20 left-10 w-24 h-24 bg-purple-500/30 rounded-full blur-xl z-0"
-      />
-      <motion.div
-        animate={{
-          y: [0, 30, 0],
-          rotate: [0, -5, 5, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute bottom-20 right-10 w-40 h-40 bg-blue-500/30 rounded-full blur-xl z-0"
-      />
-      <motion.div
-        animate={{
-          y: [0, -25, 0],
-          x: [0, 20, 0],
-          rotate: [0, 10, -10, 0],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-1/3 right-1/4 w-16 h-16 bg-pink-500/25 rounded-full blur-xl z-0"
-      />
-      <motion.div
-        animate={{
-          y: [0, 25, 0],
-          x: [0, -15, 0],
-          rotate: [0, -8, 8, 0],
-        }}
-        transition={{
-          duration: 9,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute bottom-1/3 left-1/4 w-20 h-20 bg-cyan-500/25 rounded-full blur-xl z-0"
-      />
     </section>
-  );
-}
-
-// TypeWriter Component
-function TypeWriter() {
-  const texts = [
-    "Full Stack Developer",
-    "React Specialist",
-    "UI/UX Designer", 
-    "Problem Solver",
-    "Creative Thinker",
-    "Tech Enthusiast"
-  ];
-
-  return (
-    <div className="text-responsive-xl md:text-responsive-2xl font-medium text-purple-400 font-poppins min-h-[60px] flex items-center justify-center">
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <TypeWriterText texts={texts} />
-      </motion.div>
-    </div>
-  );
-}
-
-function TypeWriterText({ texts }: { texts: string[] }) {
-  const [currentText, setCurrentText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const text = texts[currentIndex];
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        setCurrentText(text.slice(0, currentText.length + 1));
-        if (currentText === text) {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
-      } else {
-        setCurrentText(text.slice(0, currentText.length - 1));
-        if (currentText === '') {
-          setIsDeleting(false);
-          setCurrentIndex((prev) => (prev + 1) % texts.length);
-        }
-      }
-    }, isDeleting ? 50 : 100);
-
-    return () => clearTimeout(timeout);
-  }, [currentText, currentIndex, isDeleting, texts]);
-
-  return (
-    <span className="relative">
-      {currentText}
-      <motion.span
-        animate={{ opacity: [0, 1, 0] }}
-        transition={{ duration: 0.8, repeat: Infinity }}
-        className="inline-block w-1 h-8 bg-purple-400 ml-1"
-      />
-    </span>
   );
 }
