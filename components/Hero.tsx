@@ -28,15 +28,15 @@ export default function Hero() {
       <FloatingShapes />
       
       {/* 3D Background */}
-      <div className="absolute inset-0 -z-5">
+      <div className="absolute inset-0 z-0">
         <FloatingText />
       </div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/5 via-transparent to-blue-900/5 z-10" />
 
       {/* Content */}
-      <div ref={containerRef} className="relative z-30 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <div ref={containerRef} className="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 1, y: 0 }}
           animate={controls}
@@ -173,27 +173,55 @@ export default function Hero() {
       {/* Floating Elements */}
       <motion.div
         animate={{
-          y: [0, -20, 0],
+          y: [0, -30, 0],
           rotate: [0, 5, -5, 0],
+          scale: [1, 1.1, 1],
         }}
         transition={{
           duration: 8,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-20 left-10 w-20 h-20 bg-purple-500/20 rounded-full blur-xl z-0"
+        className="absolute top-20 left-10 w-24 h-24 bg-purple-500/30 rounded-full blur-xl z-0"
       />
       <motion.div
         animate={{
-          y: [0, 20, 0],
+          y: [0, 30, 0],
           rotate: [0, -5, 5, 0],
+          scale: [1, 1.2, 1],
         }}
         transition={{
           duration: 10,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-20 right-10 w-32 h-32 bg-blue-500/20 rounded-full blur-xl z-0"
+        className="absolute bottom-20 right-10 w-40 h-40 bg-blue-500/30 rounded-full blur-xl z-0"
+      />
+      <motion.div
+        animate={{
+          y: [0, -25, 0],
+          x: [0, 20, 0],
+          rotate: [0, 10, -10, 0],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute top-1/3 right-1/4 w-16 h-16 bg-pink-500/25 rounded-full blur-xl z-0"
+      />
+      <motion.div
+        animate={{
+          y: [0, 25, 0],
+          x: [0, -15, 0],
+          rotate: [0, -8, 8, 0],
+        }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute bottom-1/3 left-1/4 w-20 h-20 bg-cyan-500/25 rounded-full blur-xl z-0"
       />
     </section>
   );

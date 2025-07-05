@@ -42,23 +42,23 @@ const stats = [
 
 export default function About() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
     <section id="about" className="min-h-screen py-20 relative overflow-hidden">
       <GridBackground />
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-blue-900/10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20" />
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <motion.div
           initial={{ opacity: 1, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-responsive-4xl md:text-responsive-5xl font-bold font-poppins mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins mb-6">
             <span className="gradient-text">About Me</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto">
             Hi! I'm Archit, a passionate full stack developer with a love for building modern web applications and creative digital experiences. I enjoy working with the latest technologies and collaborating with teams to deliver impactful solutions.
           </p>
         </motion.div>
@@ -67,8 +67,8 @@ export default function About() {
             <motion.div
               key={feature.title}
               initial={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 * idx }}
               className={`rounded-xl p-6 bg-gradient-to-br ${feature.color} text-white shadow-lg flex items-center space-x-4`}
             >
               <feature.icon size={36} />
@@ -83,14 +83,14 @@ export default function About() {
           {stats.map((stat, idx) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 1, scale: 1 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 + 0.1 * idx }}
               className="flex flex-col items-center bg-white/10 rounded-xl p-6 shadow"
             >
               <stat.icon size={32} className="mb-2 text-purple-400" />
               <span className="text-3xl font-bold gradient-text mb-1">{stat.number}</span>
-              <span className="text-base text-gray-200">{stat.label}</span>
+              <span className="text-base text-white/90">{stat.label}</span>
             </motion.div>
           ))}
         </div>

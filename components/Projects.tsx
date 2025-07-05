@@ -94,50 +94,55 @@ export default function Projects() {
   return (
     <section id="projects" className="min-h-screen py-20 relative overflow-hidden">
       <MeshGradient />
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-transparent to-purple-900/10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-purple-900/20" />
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <motion.div
           initial={{ opacity: 1, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-responsive-4xl md:text-responsive-5xl font-bold font-poppins mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins mb-6">
             <span className="gradient-text">Featured Projects</span>
           </h2>
-          <p className="text-responsive-lg max-w-3xl mx-auto mb-8 opacity-90">
+          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-white/90">
             Showcasing some of my best work in web development, featuring modern technologies and innovative solutions
           </p>
           
           {/* Filter buttons */}
-          <div className="flex justify-center space-x-4 mb-8">
+          <motion.div 
+            initial={{ opacity: 1, y: 0 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex justify-center space-x-4 mb-8"
+          >
             {['all', 'featured'].map((filterType) => (
               <button
                 key={filterType}
                 onClick={() => setFilter(filterType)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 text-responsive-sm ${
+                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm md:text-base ${
                   filter === filterType
                     ? 'bg-purple-600 text-white'
-                    : 'bg-white/10 hover:bg-white/20'
+                    : 'bg-white/10 hover:bg-white/20 text-white'
                 }`}
               >
                 {filterType === 'all' ? 'All Projects' : 'Featured'}
               </button>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* All Projects Grid (shows all, including mock data) */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <ProjectCard key={project.id} project={project} index={index} isInView={isInView} />
           ))}
         </div>
 
         <motion.div
           initial={{ opacity: 1, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mt-16"
         >
           <motion.button 
@@ -145,7 +150,7 @@ export default function Projects() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="flex items-center text-responsive-sm">
+            <span className="flex items-center text-sm md:text-base">
               View All Projects
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             </span>
@@ -156,16 +161,16 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ project, index, featured = false }: { project: Project; index: number; featured?: boolean }) {
+function ProjectCard({ project, index, featured = false, isInView }: { project: Project; index: number; featured?: boolean; isInView: boolean }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const cardInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 1, y: 0 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
+              ref={ref}
+        initial={{ opacity: 1, y: 0 }}
+        animate={cardInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.1 * index }}
       className={`glass-card rounded-xl overflow-hidden card-hover group ${
         featured ? 'lg:col-span-1' : ''
       }`}
@@ -185,11 +190,11 @@ function ProjectCard({ project, index, featured = false }: { project: Project; i
           <div className="absolute top-4 left-4 flex space-x-2">
             <div className="flex items-center space-x-1 bg-black/50 backdrop-blur-sm rounded-full px-2 py-1">
               <Star className="w-3 h-3 text-yellow-400" />
-              <span className="text-responsive-xs">{project.stats.stars}</span>
+              <span className="text-xs">{project.stats.stars}</span>
             </div>
             <div className="flex items-center space-x-1 bg-black/50 backdrop-blur-sm rounded-full px-2 py-1">
               <Users className="w-3 h-3 text-blue-400" />
-              <span className="text-responsive-xs">{project.stats.users}</span>
+              <span className="text-xs">{project.stats.users}</span>
             </div>
           </div>
         )}
@@ -224,16 +229,16 @@ function ProjectCard({ project, index, featured = false }: { project: Project; i
         {project.stats && (
           <div className="absolute bottom-4 left-4 flex items-center space-x-1 bg-black/50 backdrop-blur-sm rounded-full px-2 py-1">
             <Calendar className="w-3 h-3 text-gray-400" />
-            <span className="text-responsive-xs">{project.stats.date}</span>
+            <span className="text-xs">{project.stats.date}</span>
           </div>
         )}
       </div>
       
       <div className="p-6">
-        <h3 className="text-responsive-lg font-bold mb-3 group-hover:text-purple-400 transition-colors duration-300">
+        <h3 className="text-lg md:text-xl font-bold mb-3 group-hover:text-purple-400 transition-colors duration-300 text-white">
           {project.title}
         </h3>
-        <p className="text-responsive-sm opacity-70 mb-4 leading-relaxed">
+        <p className="text-sm md:text-base text-white/70 mb-4 leading-relaxed">
           {project.description}
         </p>
         
@@ -241,7 +246,7 @@ function ProjectCard({ project, index, featured = false }: { project: Project; i
           {project.technologies.map((tech) => (
             <motion.span
               key={tech}
-              className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-purple-300 rounded-full text-responsive-xs border border-purple-500/30"
+              className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-purple-300 rounded-full text-xs border border-purple-500/30"
               whileHover={{ scale: 1.05 }}
             >
               {tech}
@@ -256,7 +261,7 @@ function ProjectCard({ project, index, featured = false }: { project: Project; i
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-purple-400 hover:text-purple-300 transition-colors text-responsive-sm font-medium"
+                className="text-purple-400 hover:text-purple-300 transition-colors text-sm md:text-base font-medium"
                 whileHover={{ x: 5 }}
               >
                 Live Demo →
@@ -267,7 +272,7 @@ function ProjectCard({ project, index, featured = false }: { project: Project; i
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-300 transition-colors text-responsive-sm font-medium"
+                className="text-blue-400 hover:text-blue-300 transition-colors text-sm md:text-base font-medium"
                 whileHover={{ x: 5 }}
               >
                 Source Code →
