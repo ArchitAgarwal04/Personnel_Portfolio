@@ -16,21 +16,25 @@ export default function Hero() {
     controls.start({ opacity: 1, y: 0 });
   }, [controls]);
 
-  // Simple scroll detection to hide name
+  // Scroll detection to hide name as soon as user starts scrolling
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
       
-      // Hide name if scrolled more than 50% of viewport height
-      if (scrollY > windowHeight * 0.5) {
+      // Hide name if scrolled more than 50px (very sensitive)
+      if (scrollY > 50) {
         setIsNameVisible(false);
       } else {
         setIsNameVisible(true);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Add event listener with passive option for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Initial check
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -166,26 +170,24 @@ export default function Hero() {
             </motion.div>
 
             {/* Name with Letter Assembly Animation - Only visible on home page */}
-            {isNameVisible && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="mb-6"
-              >
-                <LetterAssembly
-                  text="Archit"
-                  className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white block mb-2"
-                  delay={0.8}
-                />
-                <LetterAssembly
-                  text="Agarwal"
-                  className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent block"
-                  delay={1.4}
-                />
-              </motion.div>
-            )}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isNameVisible ? 1 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="mb-6"
+              style={{ display: isNameVisible ? 'block' : 'none' }}
+            >
+              <LetterAssembly
+                text="Archit"
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white block mb-2"
+                delay={0.8}
+              />
+              <LetterAssembly
+                text="Agarwal"
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent block"
+                delay={1.4}
+              />
+            </motion.div>
 
             {/* TypeWriter */}
             <motion.div
@@ -205,6 +207,125 @@ export default function Hero() {
                 ]}
                 className="text-2xl sm:text-3xl font-medium text-purple-400 justify-center lg:justify-start"
               />
+            </motion.div>
+
+
+
+            {/* Animated Slogan */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 3.2 }}
+              className="mb-6"
+            >
+              <div className="text-center lg:text-left">
+                <div className="relative inline-block">
+                  {/* Background Glow */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 blur-xl rounded-lg"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      opacity: [0.3, 0.6, 0.3],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  
+                  {/* Main Container */}
+                  <motion.div
+                    className="relative bg-black/40 backdrop-blur-sm border border-purple-400/50 rounded-lg px-6 py-3 shadow-lg"
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 3.4 }}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    {/* Animated Border */}
+                    <motion.div
+                      className="absolute inset-0 rounded-lg border-2 border-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400"
+                      animate={{
+                        background: [
+                          "linear-gradient(90deg, #a855f7, #ec4899, #3b82f6)",
+                          "linear-gradient(90deg, #3b82f6, #a855f7, #ec4899)",
+                          "linear-gradient(90deg, #ec4899, #3b82f6, #a855f7)",
+                          "linear-gradient(90deg, #a855f7, #ec4899, #3b82f6)",
+                        ]
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                      style={{
+                        mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                        maskComposite: "exclude",
+                        WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                        WebkitMaskComposite: "xor"
+                      }}
+                    />
+                    
+                    {/* Slogan Text */}
+                    <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-4">
+                      {["Think", "Build", "Ship", "Repeat"].map((word, index) => (
+                        <motion.div
+                          key={word}
+                          initial={{ opacity: 0, y: 20, rotateX: -90 }}
+                          animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                          transition={{
+                            duration: 0.8,
+                            delay: 3.6 + index * 0.2,
+                            type: "spring",
+                            stiffness: 100,
+                            damping: 10
+                          }}
+                          className="relative group"
+                        >
+                          {/* Text Glow Effect */}
+                          <motion.div
+                            className="absolute inset-0 text-purple-400 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                            animate={{
+                              opacity: [0, 0.3, 0],
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              delay: index * 0.5
+                            }}
+                          >
+                            {word}
+                          </motion.div>
+                          
+                          {/* Main Text */}
+                          <span className="relative text-lg sm:text-xl font-bold text-white tracking-wider group-hover:text-purple-300 transition-colors duration-300">
+                            {word}
+                          </span>
+                        </motion.div>
+                      ))}
+                    </div>
+                    
+                    {/* Animated Dots */}
+                    <div className="flex justify-center lg:justify-start gap-1 mt-2">
+                      {[0, 1, 2, 3].map((dot) => (
+                        <motion.div
+                          key={dot}
+                          className="w-1.5 h-1.5 bg-purple-400 rounded-full"
+                          animate={{
+                            scale: [0.8, 1.5, 0.8],
+                            opacity: [0.3, 1, 0.3],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            delay: dot * 0.2,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
             </motion.div>
 
             {/* Description */}
@@ -271,7 +392,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Social Links */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 3.5 }}
@@ -292,7 +413,7 @@ export default function Hero() {
                   <social.icon className="w-5 h-5" />
                 </motion.a>
               ))}
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </div>
       </div>

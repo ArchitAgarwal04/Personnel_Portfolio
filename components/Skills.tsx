@@ -110,18 +110,16 @@ const certifications = [
 ];
 
 export default function Skills() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
   return (
     <section id="skills" className="min-h-screen py-20 relative overflow-hidden">
       <GridBackground />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20" />
       <OrbitingSkills />
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -137,8 +135,9 @@ export default function Skills() {
           {skillCategories.map((category, index) => (
           <motion.div
               key={category.name}
-              initial={{ opacity: 1, y: 0 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.1 * index }}
               className="glass-card p-6 rounded-xl"
           >
@@ -153,20 +152,22 @@ export default function Skills() {
                   {category.skills.map((skill, skillIndex) => (
                     <motion.div
                       key={skill.name}
-                      initial={{ opacity: 1, x: 0 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 * index + 0.05 * skillIndex }}
-                  >
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.5, delay: 0.1 * index + 0.05 * skillIndex }}
+                    >
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm md:text-base font-medium text-white">{skill.name}</span>
                       <span className="text-sm text-purple-300">{skill.level}%</span>
                     </div>
                     <div className="w-full bg-white/10 rounded-full h-2">
                           <motion.div
-                        className="h-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
-                            initial={{ width: `${skill.level}%` }}
-                        animate={isInView ? { width: `${skill.level}%` } : { width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: 0.1 * index + 0.1 * skillIndex }}
+                            className="h-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 1, delay: 0.1 * index + 0.1 * skillIndex }}
                           />
                         </div>
                   </motion.div>
@@ -177,8 +178,9 @@ export default function Skills() {
                 </div>
 
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mt-16"
         >
@@ -212,8 +214,9 @@ export default function Skills() {
 
         {/* Certifications Section */}
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center"
         >
@@ -222,8 +225,9 @@ export default function Skills() {
             {certifications.map((cert, index) => (
               <motion.div
                 key={cert.name}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: 0.7 + 0.1 * index }}
                 className="glass-card p-6 rounded-xl card-hover"
               >

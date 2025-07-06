@@ -41,17 +41,15 @@ const stats = [
 ];
 
 export default function About() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
-
   return (
     <section id="about" className="min-h-screen py-20 relative overflow-hidden">
       <GridBackground />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20" />
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -66,8 +64,9 @@ export default function About() {
           {features.map((feature, idx) => (
             <motion.div
               key={feature.title}
-              initial={{ opacity: 1, y: 0 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.1 * idx }}
               className={`rounded-xl p-6 bg-gradient-to-br ${feature.color} text-white shadow-lg flex items-center space-x-4`}
             >
@@ -83,8 +82,9 @@ export default function About() {
           {stats.map((stat, idx) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 1, scale: 1 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.4 + 0.1 * idx }}
               className="flex flex-col items-center bg-white/10 rounded-xl p-6 shadow"
             >

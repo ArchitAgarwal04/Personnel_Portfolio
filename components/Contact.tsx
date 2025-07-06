@@ -29,8 +29,6 @@ const contactInfo = [
 ];
 
 export default function Contact() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
@@ -65,10 +63,11 @@ export default function Contact() {
     <section id="contact" className="min-h-screen py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-purple-900/20" />
       {/* ContactCube removed as it requires onActivate prop */}
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -83,8 +82,9 @@ export default function Contact() {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Information */}
           <motion.div
-            initial={{ opacity: 1, x: 0 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-8"
           >
@@ -99,8 +99,9 @@ export default function Contact() {
                   <motion.a
                     key={info.title}
                     href={info.link}
-                    initial={{ opacity: 1, y: 0 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.5, delay: 0.3 + 0.1 * index }}
                     className="flex items-center space-x-4 p-4 rounded-lg hover:bg-white/10 transition-colors duration-300 group"
                   >
@@ -120,8 +121,9 @@ export default function Contact() {
               <h3 className="text-xl md:text-2xl font-bold mb-4 gradient-text">What I Offer</h3>
               <ul className="space-y-3 text-white/90">
                 <motion.li
-                  initial={{ opacity: 1, x: 0 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                   className="flex items-center"
             >
@@ -129,8 +131,9 @@ export default function Contact() {
                   Full-stack web development
                 </motion.li>
                 <motion.li
-                  initial={{ opacity: 1, x: 0 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
                   className="flex items-center"
                 >
@@ -138,8 +141,9 @@ export default function Contact() {
                   Mobile app development
                 </motion.li>
                 <motion.li
-                  initial={{ opacity: 1, x: 0 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: 0.8 }}
                   className="flex items-center"
                 >
@@ -147,8 +151,9 @@ export default function Contact() {
                   UI/UX design consultation
                 </motion.li>
                 <motion.li
-                  initial={{ opacity: 1, x: 0 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: 0.9 }}
                   className="flex items-center"
                 >
@@ -161,8 +166,9 @@ export default function Contact() {
 
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 1, x: 0 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="glass-card p-8 rounded-xl"
           >
@@ -170,8 +176,9 @@ export default function Contact() {
               
               <form onSubmit={handleSubmit} className="space-y-6">
               <motion.div
-                initial={{ opacity: 1, y: 0 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
                 <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
@@ -190,8 +197,9 @@ export default function Contact() {
               </motion.div>
                 
               <motion.div
-                initial={{ opacity: 1, y: 0 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
@@ -210,8 +218,9 @@ export default function Contact() {
               </motion.div>
                 
               <motion.div
-                initial={{ opacity: 1, y: 0 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
                 <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
@@ -230,8 +239,9 @@ export default function Contact() {
               </motion.div>
                 
               <motion.div
-                initial={{ opacity: 1, y: 0 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
                 <motion.button

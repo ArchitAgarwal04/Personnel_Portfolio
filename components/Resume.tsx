@@ -85,9 +85,6 @@ const projects = [
 ];
 
 export default function Resume() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
   const handleDownload = () => {
     // In a real application, you would serve the actual PDF file
     const link = document.createElement('a');
@@ -106,10 +103,11 @@ export default function Resume() {
       <MeshGradient />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-purple-900/20" />
       
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -144,8 +142,9 @@ export default function Resume() {
 
         {/* Professional Summary */}
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="glass-card p-8 rounded-xl mb-12"
         >
@@ -160,8 +159,9 @@ export default function Resume() {
         <div className="grid lg:grid-cols-2 gap-12 mb-12">
           {/* Experience */}
           <motion.div
-            initial={{ opacity: 1, x: 0 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="glass-card p-8 rounded-xl">
@@ -176,8 +176,9 @@ export default function Resume() {
                 {experiences.map((exp, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 1, y: 0 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.5, delay: 0.1 * index }}
                     className="border-l-2 border-purple-500/50 pl-6 relative"
                   >
@@ -213,8 +214,9 @@ export default function Resume() {
 
           {/* Education & Projects */}
           <motion.div
-            initial={{ opacity: 1, x: 0 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="space-y-8"
           >
@@ -231,8 +233,9 @@ export default function Resume() {
                 {education.map((edu, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 1, y: 0 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.5, delay: 0.2 + 0.1 * index }}
                     className="border-l-2 border-blue-500/50 pl-6 relative"
                   >
@@ -267,8 +270,9 @@ export default function Resume() {
                 {projects.map((project, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 1, x: 0 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.5, delay: 0.3 + 0.1 * index }}
                     className="p-4 bg-white/10 rounded-lg border border-white/20"
                   >
@@ -287,8 +291,9 @@ export default function Resume() {
 
         {/* Achievements */}
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.8 }}
           className="glass-card p-8 rounded-xl"
         >
@@ -303,8 +308,9 @@ export default function Resume() {
             {achievements.map((achievement, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 1, x: 0 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: 0.9 + 0.05 * index }}
                 className="flex items-start"
               >

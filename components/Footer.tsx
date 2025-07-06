@@ -21,17 +21,15 @@ const IconComponents = {
 };
 
 export default function Footer() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
-
   return (
     <footer className="py-20 relative overflow-hidden bg-gradient-to-t from-black/50 to-transparent z-20">
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-blue-900/10" />
       
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
           className="text-center"
         >
@@ -48,8 +46,9 @@ export default function Footer() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex justify-center space-x-6 mb-12"
         >
@@ -61,8 +60,9 @@ export default function Footer() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 1, y: 0 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
                 className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:scale-110 transition-all duration-200 group"
               >
@@ -73,8 +73,9 @@ export default function Footer() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 1 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="border-t border-white/10 pt-8 text-center"
         >
@@ -82,8 +83,9 @@ export default function Footer() {
             © 2024 Archit Agarwal. All rights reserved.
           </p>
           <motion.div
-            initial={{ opacity: 1, y: 0 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex items-center justify-center space-x-2 text-white/70"
           >

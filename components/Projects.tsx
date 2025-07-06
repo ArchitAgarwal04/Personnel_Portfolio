@@ -84,8 +84,6 @@ const projects: Project[] = [
 ];
 
 export default function Projects() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const [filter, setFilter] = useState('all');
 
   // Always show all projects, including mock data, regardless of filter
@@ -95,10 +93,11 @@ export default function Projects() {
     <section id="projects" className="min-h-screen py-20 relative overflow-hidden">
       <MeshGradient />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-purple-900/20" />
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -111,8 +110,9 @@ export default function Projects() {
           
           {/* Filter buttons */}
           <motion.div 
-            initial={{ opacity: 1, y: 0 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex justify-center space-x-4 mb-8"
           >
@@ -135,13 +135,14 @@ export default function Projects() {
         {/* All Projects Grid (shows all, including mock data) */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} isInView={isInView} />
+            <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
 
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mt-16"
         >
@@ -161,16 +162,13 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ project, index, featured = false, isInView }: { project: Project; index: number; featured?: boolean; isInView: boolean }) {
-  const ref = useRef(null);
-  const cardInView = useInView(ref, { once: true, amount: 0.3 });
-
+function ProjectCard({ project, index, featured = false }: { project: Project; index: number; featured?: boolean }) {
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 1, y: 0 }}
-        animate={cardInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.1 * index }}
+      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.8, delay: 0.1 * index }}
       className={`glass-card rounded-xl overflow-hidden card-hover group ${
         featured ? 'lg:col-span-1' : ''
       }`}
