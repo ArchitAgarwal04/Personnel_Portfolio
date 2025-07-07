@@ -63,14 +63,13 @@ const education: Education[] = [
 ];
 
 const achievements = [
-  'Led a team of 5 developers in delivering a $2M e-commerce project',
-  'Improved application performance by 40% through optimization techniques',
-  'Contributed to 10+ open source projects with 500+ GitHub stars',
-  'Mentored 15+ junior developers and conducted technical workshops',
-  'Built and deployed 50+ production applications',
-  'Achieved AWS Certified Developer Associate certification',
-  'Speaker at 3 tech conferences and meetups',
-  'Maintained 99.9% uptime for critical production systems'
+  'Finalist at Quasar 3.0, a national-level hackathon held in Mumbai.',
+  'Finalist at Grapha-e-thon 2.0, national hackathon representing university.',
+  'Co-Technical Lead at Co-Dev Club, Graphic Era Hill University.',
+  'Organized and led Arambh 3.0, a flagship CP event for 100+ participants.',
+  'Knight on LeetCode and Pupil on Codeforces.',
+  'Completed PwC Launchpad course in Cybersecurity Risk & Compliance.',
+  'Mentored peers and juniors in full-stack development and competitive programming.'
 ];
 
 const projects = [
