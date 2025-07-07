@@ -209,8 +209,6 @@ export default function Hero() {
               />
             </motion.div>
 
-
-
             {/* Animated Slogan */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -340,31 +338,7 @@ export default function Hero() {
             </motion.p>
 
             {/* Feature highlights */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 2.9 }}
-              className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8"
-            >
-              {[
-                { icon: Code, text: "Clean Code", color: "from-blue-500 to-cyan-500" },
-                { icon: Palette, text: "Creative Design", color: "from-purple-500 to-pink-500" },
-                { icon: Zap, text: "Performance", color: "from-yellow-500 to-orange-500" },
-              ].map((item, index) => (
-                <motion.div
-                  key={item.text}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 3.0 + index * 0.1 }}
-                  className="backdrop-blur-sm bg-white/10 border border-white/20 rounded-full px-4 py-2 flex items-center space-x-2 hover:scale-105 transition-transform duration-300"
-                >
-                  <div className={`w-6 h-6 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center`}>
-                    <item.icon className="w-3 h-3 text-white" />
-                  </div>
-                  <span className="text-sm font-medium text-white">{item.text}</span>
-                </motion.div>
-              ))}
-            </motion.div>
+            {/* Removed Clean Code, Creative Design, Performance buttons from Home section */}
 
             {/* Action Buttons */}
             <motion.div

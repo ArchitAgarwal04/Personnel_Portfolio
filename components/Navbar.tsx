@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, User, Briefcase, Award, FileText, Mail, Sun, Moon } from 'lucide-react';
-import { useTheme } from '@/components/ThemeProvider';
 
 const navItems = [
   { name: 'Home', href: '#hero', icon: Home },
@@ -18,7 +17,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
-  const { theme, toggleTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -112,17 +110,6 @@ export default function Navbar() {
 
             {/* Theme Toggle & Mobile menu button */}
             <div className="flex items-center space-x-4">
-              <motion.button
-                onClick={toggleTheme}
-                className="p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                disabled={!mounted}
-                aria-label="Toggle theme"
-              >
-                {!mounted ? null : theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-              </motion.button>
-              
               <div className="md:hidden">
                 <button
                   onClick={() => setIsOpen(!isOpen)}
