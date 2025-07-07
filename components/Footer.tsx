@@ -7,10 +7,9 @@ import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react';
 import { SocialLink } from '@/types';
 
 const socialLinks: SocialLink[] = [
-  { name: 'GitHub', url: 'https://github.com/archit', icon: 'Github' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/archit-agarwal', icon: 'Linkedin' },
-  { name: 'Twitter', url: 'https://twitter.com/archit_agarwal', icon: 'Twitter' },
-  { name: 'Email', url: 'mailto:archit.agarwal@example.com', icon: 'Mail' },
+  { name: 'GitHub', url: 'https://github.com/ArchitAgarwal04', icon: 'Github' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/archit-agarwal-486ba5256/', icon: 'Linkedin' },
+  { name: 'Email', url: 'mailto:architagarwal147@gmail.com', icon: 'Mail' },
 ];
 
 const IconComponents = {
@@ -82,22 +81,6 @@ export default function Footer() {
           <p className="text-white/70 mb-4">
             © 2024 Archit Agarwal. All rights reserved.
           </p>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex items-center justify-center space-x-2 text-white/70"
-          >
-            <span>Made with</span>
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Heart className="w-5 h-5 text-red-500 fill-current" />
-            </motion.div>
-            <span>by Archit</span>
-          </motion.div>
         </motion.div>
       </div>
     </footer>

@@ -56,6 +56,7 @@ export default function About() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins mb-6">
             <span className="gradient-text">About Me</span>
           </h2>
+          <p className="text-lg md:text-xl font-semibold text-white/80 mb-2">CSE Undergrad | Web Developer | Competitive Programmer</p>
           <TypeWriter
             texts={["Full Stack Developer", "Hackathon Finalist", "Mentor & Leader", "Open Source Contributor", "AI Explorer"]}
             className="text-xl sm:text-2xl font-medium text-purple-300 justify-center mt-2"

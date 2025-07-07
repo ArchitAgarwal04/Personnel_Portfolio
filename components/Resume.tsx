@@ -9,50 +9,57 @@ import { MeshGradient } from '@/components/BackgroundAnimations';
 
 const experiences: Experience[] = [
   {
-    title: 'Senior Full Stack Developer',
-    company: 'TechCorp Inc.',
-    period: '2022 - Present',
-    description: 'Lead development of scalable web applications using React, Node.js, and cloud technologies. Managed a team of 5 developers and delivered 15+ successful projects.',
-    technologies: ['React', 'Next.js', 'Node.js', 'AWS', 'PostgreSQL', 'TypeScript']
+    title: 'Co-Technical Lead',
+    company: 'Co-Dev Club, Graphic Era Hill University',
+    period: 'Aug 2024 – Present',
+    description: 'Mentored over 100 students in web development and DSA through club sessions and peer learning initiatives. Led internal tech teams to build full-stack applications using React, Node.js, MongoDB, and Docker. Conducted workshops on Git, API integration, and performance optimization. Collaborated with faculty and student developers to promote a culture of open-source and project-based learning.',
+    technologies: ['React', 'Node.js', 'MongoDB', 'Docker', 'Git']
   },
   {
-    title: 'Full Stack Developer',
-    company: 'StartupXYZ',
-    period: '2020 - 2022',
-    description: 'Developed and maintained multiple client projects, focusing on performance optimization and user experience. Improved application performance by 40% on average.',
-    technologies: ['React', 'Express.js', 'MongoDB', 'Docker', 'Redis']
+    title: 'Team Lead – Finalist',
+    company: 'Quasar 3.0, National Hackathon (Mumbai)',
+    period: 'March 2025',
+    description: 'Led a 4-member team to build a mental health SaaS using Next.js 14, Tailwind CSS, MongoDB, and OpenAI APIs. Integrated a custom LLM for personalized journaling support and therapy insights. Implemented real-time analytics, chart visualizations, and responsive UI with light/dark mode themes. Selected as one of the top finalists among 300+ teams nationwide.',
+    technologies: ['Next.js', 'TypeScript', 'Framer Motion', 'MongoDB', 'Tailwind CSS']
   },
   {
-    title: 'Frontend Developer',
-    company: 'WebSolutions',
-    period: '2019 - 2020',
-    description: 'Created responsive and interactive user interfaces using modern frontend frameworks. Collaborated with design teams to implement pixel-perfect designs.',
-    technologies: ['React', 'Vue.js', 'Sass', 'Webpack', 'Jest']
+    title: 'Team Lead – Finalist',
+    company: 'Grapha-e-thon 2.0, National Hackathon',
+    period: 'April 2025',
+    description: 'Led a 4-member team to build a mental health SaaS using Next.js 14, Tailwind CSS, MongoDB, and OpenAI APIs. Integrated a custom LLM for personalized journaling support and therapy insights. Implemented real-time analytics, chart visualizations, and responsive UI with light/dark mode themes. Selected as one of the top finalists among 300+ teams nationwide.',
+    technologies: ['Next.js 14', 'Tailwind CSS', 'MongoDB', 'Docker', 'OpenAI APIs']
   },
   {
-    title: 'Junior Developer',
-    company: 'CodeCraft Agency',
-    period: '2018 - 2019',
-    description: 'Started my professional journey building websites and learning modern development practices. Contributed to 20+ client projects.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'jQuery', 'PHP']
-  },
+    title: 'Open Source Creator',
+    company: 'OSimulate – Operating Systems Learning Dashboard',
+    period: 'June 2025 – Present',
+    description: 'Designed and open-sourced a full-fledged learning dashboard to teach core OS concepts through interactive visualizations. Included modules for Page Replacement, CPU Scheduling, and Memory Management with animations, theory, and code walkthroughs.',
+    technologies: ['C++', 'Next.js', 'Express.js', 'Tailwind CSS', 'Framer Motion']
+  }
 ];
 
 const education: Education[] = [
   {
-    degree: 'Bachelor of Technology in Computer Science',
-    institution: 'Indian Institute of Technology, Delhi',
-    period: '2015 - 2019',
-    description: 'Focused on software engineering, data structures, algorithms, and computer systems. Graduated with First Class Honors.',
-    gpa: '8.7/10'
+    degree: 'Bachelor of Technology in Computer Science and Engineering',
+    institution: 'Graphic Era Hill University, Uttarakhand',
+    period: '2022 – 2026',
+    description: 'Focused on data structures, algorithms, operating systems, and full-stack development. Co-led university tech club initiatives and participated in national-level hackathons.',
+    gpa: 'CGPA: 8.68/10'
   },
   {
-    degree: 'Higher Secondary Certificate',
-    institution: 'Delhi Public School',
-    period: '2013 - 2015',
-    description: 'Specialized in Mathematics, Physics, and Computer Science. Active member of the coding club.',
-    gpa: '94.2%'
+    degree: 'Senior Secondary (Class XII – CBSE)',
+    institution: 'Saraf Public School, Uttarakhand',
+    period: '2021',
+    description: 'Specialized in Physics, Chemistry, and Mathematics. Active participant in competitive programming contests and school-level coding activities.',
+    gpa: 'Percentage: 91.8%'
   },
+  {
+    degree: 'Secondary (Class X – ICSE)',
+    institution: 'St. Francis School, Uttarakhand',
+    period: '2019',
+    description: 'Strong foundation in science and mathematics. Engaged in early web development and logical problem-solving.',
+    gpa: 'Percentage: 92%'
+  }
 ];
 
 const achievements = [
@@ -68,19 +75,19 @@ const achievements = [
 
 const projects = [
   {
-    name: 'E-Commerce Platform',
-    description: 'Full-stack solution handling 10k+ daily users',
-    impact: '$500k+ revenue generated'
+    name: 'MindGuard – AI-Powered Mental Health SaaS',
+    description: 'A full-stack mental health platform integrating a custom LLM for journaling assistance and therapy insights. Includes analytics dashboards, chart visualizations, light/dark themes, and secure authentication. Finalist at Grapha-e-thon 2.0.',
+    impact: 'Next.js 14, Tailwind CSS, MongoDB, OpenAI APIs'
   },
   {
-    name: 'Real-time Analytics Dashboard',
-    description: 'Data visualization platform for business insights',
-    impact: '60% faster decision making'
+    name: 'OSimulate – OS Learning Dashboard',
+    description: 'An open-source educational platform featuring OS theory, interactive simulations (scheduling, memory, deadlocks), quizzes, and progress tracking. Adopted by faculty and used by students; starred on GitHub.',
+    impact: 'Next.js 15, TypeScript, Tailwind CSS, Supabase'
   },
   {
-    name: 'Mobile Banking App',
-    description: 'Secure financial application with biometric auth',
-    impact: '100k+ active users'
+    name: 'FormCraft – Custom Form Builder',
+    description: 'A drag-and-drop form builder for creating dynamic forms in real-time. Supports public sharing via secure links, real-time previews, and customizable fields. Emphasizes UX and data handling.',
+    impact: 'Next.js 14, TypeScript, PostgreSQL'
   }
 ];
 
@@ -121,21 +128,21 @@ export default function Resume() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button
               onClick={handleDownload}
-              className="btn-primary group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 rounded-full font-semibold text-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hover:from-purple-700 hover:to-blue-700 hover:scale-105 transition-all duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2"
+              whileHover={{ scale: 1.07 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <Download className="mr-2 w-5 h-5" />
-              <span className="text-sm md:text-base">Download Resume</span>
+              <Download className="w-5 h-5" />
+              <span>Download Resume</span>
             </motion.button>
             <motion.button 
               onClick={handlePreview}
-              className="btn-secondary group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 rounded-full font-semibold text-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:from-blue-600 hover:to-purple-600 hover:scale-105 transition-all duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+              whileHover={{ scale: 1.07 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <Eye className="mr-2 w-5 h-5" />
-              <span className="text-sm md:text-base">Preview</span>
+              <Eye className="w-5 h-5" />
+              <span>Preview</span>
             </motion.button>
           </div>
         </motion.div>
@@ -150,9 +157,7 @@ export default function Resume() {
         >
           <h3 className="text-2xl md:text-3xl font-bold mb-4 gradient-text">Professional Summary</h3>
           <p className="text-base md:text-lg leading-relaxed text-white/90">
-            Experienced Full Stack Developer with 5+ years of expertise in building scalable web applications. 
-            Proven track record of leading development teams, optimizing performance, and delivering high-quality 
-            solutions that drive business growth. Passionate about clean code, user experience, and emerging technologies.
+            Full-stack developer skilled in MERN and T3 stacks, currently pursuing B.Tech at Graphic Era Hill University. Finalist at national hackathons Quasar 3.0 (Mumbai) and Grapha-e-thon 2.0, with a leadership role in the Co-Dev Club. Built projects using Next.js, Tailwind CSS, and OpenCV. Pupil on Codeforces, Knight on LeetCode, and passionate about solving real-world problems through code.
           </p>
         </motion.div>
 

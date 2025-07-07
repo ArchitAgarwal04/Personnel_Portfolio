@@ -11,19 +11,19 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email',
-    value: 'archit.agarwal@example.com',
-    link: 'mailto:archit.agarwal@example.com'
+    value: 'architagarwal147@gmail.com',
+    link: 'mailto:architagarwal147@gmail.com'
   },
   {
     icon: Phone,
     title: 'Phone',
-    value: '+1 (555) 123-4567',
-    link: 'tel:+15551234567'
+    value: '+91 8439939169',
+    link: 'tel:+918439939169'
   },
   {
     icon: MapPin,
     title: 'Location',
-    value: 'San Francisco, CA',
+    value: 'Dehradun, India',
     link: '#'
   }
 ];
@@ -116,52 +116,6 @@ export default function Contact() {
                 ))}
               </div>
             </div>
-
-            <div className="glass-card p-8 rounded-xl">
-              <h3 className="text-xl md:text-2xl font-bold mb-4 gradient-text">What I Offer</h3>
-              <ul className="space-y-3 text-white/90">
-                <motion.li
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                  className="flex items-center"
-            >
-                  <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                  Full-stack web development
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.7 }}
-                  className="flex items-center"
-                >
-                  <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                  Mobile app development
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.8 }}
-                  className="flex items-center"
-                >
-                  <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                  UI/UX design consultation
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.9 }}
-                  className="flex items-center"
-                >
-                  <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                  Technical consulting
-                </motion.li>
-              </ul>
-              </div>
           </motion.div>
 
           {/* Contact Form */}

@@ -9,77 +9,128 @@ import { MeshGradient } from '@/components/BackgroundAnimations';
 
 const projects: Project[] = [
   {
-    id: '1',
-    title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, admin dashboard, real-time inventory management, and advanced analytics.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Tailwind CSS', 'Socket.io'],
-    liveUrl: 'https://ecommerce-demo.com',
-    githubUrl: 'https://github.com/archit/ecommerce',
-    imageUrl: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
+    id: 'osimulate',
+    title: '🧠 OSimulate – Operating Systems Learning Dashboard',
+    description: [
+      'Interactive platform for learning Operating System concepts visually.',
+      'Structured lessons on scheduling, memory management, deadlocks, and more.',
+      'Simulators for page replacement, CPU, and disk scheduling algorithms.',
+      'Integrated notes, quizzes, and progress tracking.',
+      'Modular architecture with C++ backend logic and Next.js 15 frontend.',
+      'Adopted by faculty and students at GEHU.'
+    ],
+    technologies: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Supabase', 'C++'],
+    liveUrl: 'https://osimulate.netlify.app/',
+    githubUrl: 'https://github.com/OSimulate/OSimulate',
+    imageUrl: '/osimulate.png',
     featured: true,
-    stats: { stars: 124, users: '2.5k', date: '2024' }
+    stats: { stars: 20, users: 'Faculty & Students', date: '2025' }
   },
   {
-    id: 'mock',
-    title: 'Mock Portfolio Project',
-    description: 'A sample project to showcase portfolio layout and design. Includes mock data for demonstration.',
-    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-    liveUrl: '#',
-    githubUrl: '#',
-    imageUrl: 'https://images.pexels.com/photos/3184295/pexels-photo-3184295.jpeg?auto=compress&cs=tinysrgb&w=800',
+    id: 'formcraft',
+    title: '🧾 FormCraft – Custom Form Builder',
+    description: [
+      'Real-time form builder with drag-and-drop interface.',
+      'Design, customize, and share forms for surveys and data collection.',
+      'Secure form links with public/private access.',
+      'Live preview and custom field configuration.',
+      'PostgreSQL integration for reliable data storage.',
+      'Type-safe backend with Next.js 14 and TypeScript.',
+      'Ideal for teams and individuals needing quick, customizable forms.'
+    ],
+    technologies: ['Next.js 14', 'TypeScript', 'PostgreSQL', 'Tailwind CSS'],
+    liveUrl: 'https://form-craft-delta.vercel.app/',
+    githubUrl: 'https://github.com/ArchitAgarwal04/FormCraft',
+    imageUrl: '/formcraft.png',
     featured: false,
-    stats: { stars: 0, users: '0', date: '2025' }
+    stats: { stars: 0, users: 'Teams & Individuals', date: '2025' }
   },
   {
-    id: '2',
-    title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates, drag-and-drop functionality, team collaboration features, time tracking, and advanced project analytics.',
-    technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma', 'Socket.io', 'Framer Motion'],
-    liveUrl: 'https://taskmanager-demo.com',
-    githubUrl: 'https://github.com/archit/taskmanager',
-    imageUrl: 'https://images.pexels.com/photos/3184295/pexels-photo-3184295.jpeg?auto=compress&cs=tinysrgb&w=800',
+    id: 'mindguard',
+    title: '🧠 MindGuard – AI-Powered Mental Health SaaS',
+    description: [
+      'Intelligent SaaS platform for personalized journaling and emotional tracking.',
+      'Custom LLM integration for empathetic, context-aware prompts.',
+      'Analytics dashboard for mood trends and keyword insights.',
+      'Light/dark mode UI for accessibility.',
+      'Secure MongoDB storage and user authentication.',
+      'Conversational AI interface using OpenAI APIs.',
+      'Finalist at Grapha-e-thon 2.0, praised for real-world impact and UX.',
+      'Open-sourced and modular for future expansion.'
+    ],
+    technologies: ['Next.js 14', 'Tailwind CSS', 'MongoDB', 'OpenAI APIs', 'TypeScript'],
+    githubUrl: 'https://github.com/ArchitAgarwal04/MindGuard',
+    imageUrl: '/mindguard.jpg',
     featured: true,
-    stats: { stars: 89, users: '1.8k', date: '2024' }
+    stats: { stars: 0, users: 'Finalist Teams', date: '2025' }
   },
   {
     id: '3',
     title: 'Weather Dashboard',
-    description: 'A beautiful weather dashboard with interactive charts, location-based forecasts, animated weather icons, and detailed climate analytics.',
+    description: [
+      'Beautiful dashboard with interactive weather charts.',
+      'Location-based forecasts and animated weather icons.',
+      'Detailed climate analytics and data visualizations.',
+      'Built with React, D3.js, and Chart.js.'
+    ],
     technologies: ['React', 'D3.js', 'OpenWeather API', 'Framer Motion', 'Chart.js'],
-    liveUrl: 'https://weather-dashboard-demo.com',
-    githubUrl: 'https://github.com/archit/weather-dashboard',
-    imageUrl: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
+    liveUrl: 'https://weather-dashboard-bah3-m019b2xp8.vercel.app/',
+    githubUrl: 'https://github.com/ArchitAgarwal04/WeatherDashboard',
+    imageUrl: '/image.png',
     stats: { stars: 67, users: '1.2k', date: '2023' }
   },
   {
-    id: '4',
-    title: 'Social Media Analytics',
-    description: 'An analytics dashboard for social media managers with real-time metrics, engagement tracking, report generation, and AI-powered insights.',
-    technologies: ['Vue.js', 'Python', 'FastAPI', 'PostgreSQL', 'Chart.js', 'TensorFlow'],
-    liveUrl: 'https://social-analytics-demo.com',
-    githubUrl: 'https://github.com/archit/social-analytics',
-    imageUrl: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800',
-    stats: { stars: 156, users: '3.1k', date: '2023' }
+    id: 'pathfinding',
+    title: '🧭 Pathfinding Race – Visual Pathfinding Algorithm Simulator',
+    description: [
+      'Interactive web-based tool to visualize and compare pathfinding algorithms in real-time.',
+      'Race Mode: Watch BFS, Dijkstra\'s, and A* compete to find the shortest path.',
+      'Step-by-step animation with color-coded nodes and traversal flow.',
+      'Custom grid editor: add walls, set start/end points, generate random mazes.',
+      'Control animation speed, reset grid, and compare runs dynamically.',
+      'Educational focus: designed to teach algorithm behavior visually and intuitively.',
+      'Perfect for students, educators, and anyone curious about pathfinding.'
+    ],
+    technologies: ['HTML', 'CSS', 'JavaScript'],
+    liveUrl: 'https://architagarwal04.github.io/pathFinding/',
+    githubUrl: 'https://github.com/ArchitAgarwal04/pathFinding',
+    imageUrl: '/pathfinding.png',
+    stats: { stars: 0, users: 'Students & Educators', date: '2024' }
   },
   {
-    id: '5',
-    title: 'AI Content Generator',
-    description: 'An AI-powered content generation tool that helps writers create engaging content using natural language processing and machine learning.',
-    technologies: ['React', 'OpenAI API', 'Node.js', 'MongoDB', 'Tailwind CSS', 'Redis'],
-    liveUrl: 'https://ai-content-demo.com',
-    githubUrl: 'https://github.com/archit/ai-content-generator',
-    imageUrl: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
-    stats: { stars: 203, users: '4.7k', date: '2024' }
+    id: 'portfolio',
+    title: '🌐 Personal Portfolio – Developer Showcase & Digital Identity',
+    description: [
+      'Sleek, responsive, and performance-optimized website to highlight my technical skills, projects, open-source work, and achievements.',
+      'Project showcases with tech stacks, live demos, and GitHub links.',
+      'Animated UI/UX with smooth transitions and hover effects using Framer Motion.',
+      'Modern design with custom typography, soft gradients, and light/dark mode.',
+      'Mobile-first and fully responsive across all devices.',
+      'Modular, scalable, and built with reusable components and clean code.',
+      'A storytelling platform reflecting my journey, growth, and value as a developer.'
+    ],
+    technologies: ['Next.js 14', 'Tailwind CSS', 'TypeScript', 'Framer Motion'],
+    liveUrl: 'https://personnel-portfolio-655vxase3-archit-agarwals-projects-f61b9f94.vercel.app/',
+    githubUrl: 'https://github.com/ArchitAgarwal04/Personnel_Portfolio',
+    imageUrl: '/portfolio.png',
+    stats: { stars: 0, users: 'Developers & Recruiters', date: '2025' }
   },
   {
-    id: '6',
-    title: 'Real-time Chat Application',
-    description: 'A modern chat application with real-time messaging, file sharing, video calls, and end-to-end encryption for secure communication.',
-    technologies: ['Next.js', 'Socket.io', 'WebRTC', 'MongoDB', 'Redis', 'AWS S3'],
-    liveUrl: 'https://chat-app-demo.com',
-    githubUrl: 'https://github.com/archit/chat-app',
-    imageUrl: 'https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg?auto=compress&cs=tinysrgb&w=800',
-    stats: { stars: 178, users: '2.9k', date: '2024' }
+    id: 'applevision',
+    title: '🍎 Apple Vision – Product Landing Page Clone',
+    description: [
+      'Visually striking front-end project replicating the Apple Vision Pro landing experience.',
+      'GSAP-powered scroll-based transitions and parallax effects.',
+      'Pixel-perfect layout with immersive visuals and hardware showcases.',
+      'Responsive design for desktop and mobile.',
+      'Practice project for modern web animation and layout structuring.',
+      'Demonstrates advanced front-end techniques and design-first thinking.'
+    ],
+    technologies: ['HTML', 'CSS', 'JavaScript', 'GSAP'],
+    liveUrl: 'https://architagarwal04.github.io/Apple-Vision/',
+    githubUrl: 'https://github.com/ArchitAgarwal04/Apple-Vision',
+    imageUrl: '/visionpro.png',
+    stats: { stars: 0, users: 'Frontend Enthusiasts', date: '2024' }
   },
 ];
 
@@ -107,29 +158,6 @@ export default function Projects() {
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-white/90">
             Showcasing some of my best work in web development, featuring modern technologies and innovative solutions
           </p>
-          
-          {/* Filter buttons */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center space-x-4 mb-8"
-          >
-            {['all', 'featured'].map((filterType) => (
-              <button
-                key={filterType}
-                onClick={() => setFilter(filterType)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm md:text-base ${
-                  filter === filterType
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-white/10 hover:bg-white/20 text-white'
-                }`}
-              >
-                {filterType === 'all' ? 'All Projects' : 'Featured'}
-              </button>
-            ))}
-          </motion.div>
         </motion.div>
 
         {/* All Projects Grid (shows all, including mock data) */}
@@ -138,25 +166,6 @@ export default function Projects() {
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center mt-16"
-        >
-          <motion.button 
-            className="btn-primary group"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className="flex items-center text-sm md:text-base">
-              View All Projects
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-            </span>
-          </motion.button>
-        </motion.div>
       </div>
     </section>
   );
@@ -236,9 +245,11 @@ function ProjectCard({ project, index, featured = false }: { project: Project; i
         <h3 className="text-lg md:text-xl font-bold mb-3 group-hover:text-purple-400 transition-colors duration-300 text-white">
           {project.title}
         </h3>
-        <p className="text-sm md:text-base text-white/70 mb-4 leading-relaxed">
-          {project.description}
-        </p>
+        <ul className="list-disc pl-5 text-sm md:text-base text-white/70 mb-4 leading-relaxed">
+          {project.description.map((desc, index) => (
+            <li key={index}>{desc}</li>
+          ))}
+        </ul>
         
         <div className="flex flex-wrap gap-2 mb-4">
           {project.technologies.map((tech) => (
