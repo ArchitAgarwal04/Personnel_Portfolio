@@ -5,6 +5,11 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Code, Palette, Rocket, Users, Award, Coffee } from 'lucide-react';
 import { GridBackground } from '@/components/BackgroundAnimations';
+import { LetterAssembly } from './LetterAssembly';
+import { TypeWriter } from './TypeWriter';
+import { Badge } from './ui/badge';
+import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
+import { FloatingText } from '../scenes/FloatingText';
 
 const features = [
   {
@@ -45,54 +50,88 @@ export default function About() {
     <section id="about" className="min-h-screen py-20 relative overflow-hidden">
       <GridBackground />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        {/* Animated Name & Typewriter */}
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins mb-6">
             <span className="gradient-text">About Me</span>
           </h2>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Hi! I'm Archit, a passionate full stack developer with a love for building modern web applications and creative digital experiences. I enjoy working with the latest technologies and collaborating with teams to deliver impactful solutions.
-          </p>
-        </motion.div>
-        <div className="grid md:grid-cols-2 gap-10 mb-16">
-          {features.map((feature, idx) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.1 * idx }}
-              className={`rounded-xl p-6 bg-gradient-to-br ${feature.color} text-white shadow-lg flex items-center space-x-4`}
-            >
-              <feature.icon size={36} />
-              <div>
-                <h3 className="text-2xl font-semibold mb-1">{feature.title}</h3>
-                <p className="text-base opacity-80">{feature.description}</p>
-              </div>
-            </motion.div>
-          ))}
+          <TypeWriter
+            texts={["Full Stack Developer", "Hackathon Finalist", "Mentor & Leader", "Open Source Contributor", "AI Explorer"]}
+            className="text-xl sm:text-2xl font-medium text-purple-300 justify-center mt-2"
+          />
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat, idx) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.4 + 0.1 * idx }}
-              className="flex flex-col items-center bg-white/10 rounded-xl p-6 shadow"
-            >
-              <stat.icon size={32} className="mb-2 text-purple-400" />
-              <span className="text-3xl font-bold gradient-text mb-1">{stat.number}</span>
-              <span className="text-base text-white/90">{stat.label}</span>
-            </motion.div>
-          ))}
+        {/* Thematic Cards */}
+        <div className="grid gap-8">
+          {/* What Drives Me */}
+          <Card className="bg-gradient-to-br from-purple-900/40 to-blue-900/30 border-none shadow-xl">
+            <CardHeader className="flex flex-row items-center gap-3">
+              <span className="text-pink-400"><Rocket size={28}/></span>
+              <CardTitle className="text-pink-300">What Drives Me?</CardTitle>
+            </CardHeader>
+            <CardContent className="text-white/90 text-lg">
+              <p className="mb-2">From organizing <span className="font-semibold text-purple-300">Arambh 3.0</span>, an inter-university competitive coding fest with over 100 participants, to leading finalist teams at national hackathons, I thrive on teamwork, innovation, and building with purpose.</p>
+              <p className="mb-2">I'm also the <span className="font-semibold text-blue-300">Co-Technical Lead</span> of the Co-dev Club at my university, where I mentor fellow developers, conduct technical sessions, and contribute to a growing tech community focused on peer learning and real-world development.</p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                <Badge variant="secondary">Teamwork</Badge>
+                <Badge variant="secondary">Innovation</Badge>
+                <Badge variant="secondary">Mentorship</Badge>
+                <Badge variant="secondary">Community</Badge>
+              </div>
+            </CardContent>
+          </Card>
+          {/* Competitive Programming */}
+          <Card className="bg-gradient-to-br from-blue-900/40 to-purple-900/30 border-none shadow-xl">
+            <CardHeader className="flex flex-row items-center gap-3">
+              <span className="text-cyan-400"><Code size={28}/></span>
+              <CardTitle className="text-cyan-300">Competitive Programming</CardTitle>
+            </CardHeader>
+            <CardContent className="text-white/90 text-lg">
+              <p className="mb-2">Beyond development, I actively engage in competitive programming — I'm currently a <span className="font-semibold text-purple-300">Pupil at Codeforces</span> and a <span className="font-semibold text-yellow-300">Knight at LeetCode</span>, sharpening my problem-solving and algorithmic thinking daily.</p>
+              <p>My journey began with curiosity and code — and today, that spark fuels everything I do, from solving real-world problems to exploring the frontiers of AI, systems, and full-stack development.</p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                <Badge>Pupil @ Codeforces</Badge>
+                <Badge>Knight @ LeetCode</Badge>
+                <Badge variant="secondary">Algorithmic Thinking</Badge>
+                <Badge variant="secondary">AI Explorer</Badge>
+              </div>
+            </CardContent>
+          </Card>
+          {/* Hackathons & Leadership */}
+          <Card className="bg-gradient-to-br from-pink-900/40 to-purple-900/30 border-none shadow-xl">
+            <CardHeader className="flex flex-row items-center gap-3">
+              <span className="text-yellow-400"><Award size={28}/></span>
+              <CardTitle className="text-yellow-300">Hackathons & Leadership</CardTitle>
+            </CardHeader>
+            <CardContent className="text-white/90 text-lg">
+              <ul className="list-disc pl-6 mb-2">
+                <li><span className="font-semibold text-blue-300">Quasar 3.0 (Mumbai)</span> – <span className="text-purple-300">National Finalist</span>. Led a dynamic team in building AI-powered solutions under real-world constraints, guided by industry experts.</li>
+                <li><span className="font-semibold text-blue-300">Graph-a-e-thon 2.0</span> – <span className="text-purple-300">National Finalist</span>. Spearheaded a data-driven project focused on graph-based analytics and scalable architecture.</li>
+              </ul>
+              <p>These experiences taught me to lead under pressure, collaborate deeply, and build solutions that truly matter.</p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                <Badge variant="secondary">National Finalist</Badge>
+                <Badge variant="secondary">AI Solutions</Badge>
+                <Badge variant="secondary">Leadership</Badge>
+              </div>
+            </CardContent>
+          </Card>
+          {/* Community & Mentorship */}
+          <Card className="bg-gradient-to-br from-green-900/40 to-blue-900/30 border-none shadow-xl">
+            <CardHeader className="flex flex-row items-center gap-3">
+              <span className="text-green-400"><Users size={28}/></span>
+              <CardTitle className="text-green-300">Community & Mentorship</CardTitle>
+            </CardHeader>
+            <CardContent className="text-white/90 text-lg">
+              <p>As a mentor and community builder, I love sharing knowledge, conducting technical sessions, and helping others grow. I believe in the power of peer learning and strive to foster a collaborative, inclusive tech culture wherever I go.</p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                <Badge variant="secondary">Mentor</Badge>
+                <Badge variant="secondary">Tech Sessions</Badge>
+                <Badge variant="secondary">Peer Learning</Badge>
+                <Badge variant="secondary">Inclusive Culture</Badge>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

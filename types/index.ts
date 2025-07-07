@@ -73,3 +73,11 @@ export interface Education {
   description: string;
   gpa?: string;
 }
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      meshDistortMaterial: any;
+    }
+  }
+}
