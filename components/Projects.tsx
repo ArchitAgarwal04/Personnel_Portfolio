@@ -43,7 +43,7 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/ArchitAgarwal04/FormCraft',
     imageUrl: '/formcraft.png',
     featured: false,
-    stats: { stars: 0, users: 'Teams & Individuals', date: '2025' }
+    stats: { stars: 0, users: 'Teams & Individuals', date: '2024' }
   },
   {
     id: 'mindguard',
@@ -77,7 +77,7 @@ const projects: Project[] = [
     liveUrl: 'https://weather-dashboard-bah3-m019b2xp8.vercel.app/',
     githubUrl: 'https://github.com/ArchitAgarwal04/WeatherDashboard',
     imageUrl: '/image.png',
-    stats: { stars: 67, users: '1.2k', date: '2023' }
+    stats: { stars: 67, users: '1.2k', date: '2024' }
   },
   {
     id: 'pathfinding',
@@ -95,7 +95,7 @@ const projects: Project[] = [
     liveUrl: 'https://architagarwal04.github.io/pathFinding/',
     githubUrl: 'https://github.com/ArchitAgarwal04/pathFinding',
     imageUrl: '/pathfinding.png',
-    stats: { stars: 0, users: 'Students & Educators', date: '2024' }
+    stats: { stars: 0, users: 'Students & Educators', date: '2023' }
   },
   {
     id: 'portfolio',
@@ -130,9 +130,12 @@ const projects: Project[] = [
     liveUrl: 'https://architagarwal04.github.io/Apple-Vision/',
     githubUrl: 'https://github.com/ArchitAgarwal04/Apple-Vision',
     imageUrl: '/visionpro.png',
-    stats: { stars: 0, users: 'Frontend Enthusiasts', date: '2024' }
+    stats: { stars: 0, users: 'Frontend Enthusiasts', date: '2023' }
   },
 ];
+
+// Sort projects from latest to oldest by date (descending)
+projects.sort((a, b) => Number(b.stats?.date) - Number(a.stats?.date));
 
 export default function Projects() {
   const [filter, setFilter] = useState('all');

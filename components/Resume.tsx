@@ -125,15 +125,6 @@ export default function Resume() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.button
-              onClick={handleDownload}
-              className="px-8 py-4 rounded-full font-semibold text-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hover:from-purple-700 hover:to-blue-700 hover:scale-105 transition-all duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2"
-              whileHover={{ scale: 1.07 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              <Download className="w-5 h-5" />
-              <span>Download Resume</span>
-            </motion.button>
             <motion.button 
               onClick={handlePreview}
               className="px-8 py-4 rounded-full font-semibold text-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:from-blue-600 hover:to-purple-600 hover:scale-105 transition-all duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"

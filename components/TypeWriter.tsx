@@ -1,3 +1,4 @@
+"use client";
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -7,27 +8,34 @@ interface TypeWriterProps {
 }
 
 export function TypeWriter({ texts, className = '' }: TypeWriterProps) {
+  if (!texts || texts.length === 0) {
+    return <div>No texts provided</div>;
+  }
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const text = texts[currentIndex];
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        setCurrentText(text.slice(0, currentText.length + 1));
-        if (currentText === text) {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
+    let timeout: NodeJS.Timeout;
+    if (!isDeleting) {
+      if (currentText.length < text.length) {
+        timeout = setTimeout(() => {
+          setCurrentText(text.slice(0, currentText.length + 1));
+        }, 80);
       } else {
-        setCurrentText(text.slice(0, currentText.length - 1));
-        if (currentText === '') {
-          setIsDeleting(false);
-          setCurrentIndex((prev) => (prev + 1) % texts.length);
-        }
+        timeout = setTimeout(() => setIsDeleting(true), 1000);
       }
-    }, isDeleting ? 50 : 100);
-
+    } else {
+      if (currentText.length > 0) {
+        timeout = setTimeout(() => {
+          setCurrentText(text.slice(0, currentText.length - 1));
+        }, 40);
+      } else {
+        setIsDeleting(false);
+        setCurrentIndex((prev) => (prev + 1) % texts.length);
+      }
+    }
     return () => clearTimeout(timeout);
   }, [currentText, currentIndex, isDeleting, texts]);
 
@@ -36,7 +44,7 @@ export function TypeWriter({ texts, className = '' }: TypeWriterProps) {
       <span className="relative">
         {currentText}
         <motion.span
-          animate={{ opacity: [0, 1, 0] }}
+          animate={{ opacity: [1, 1, 1] }}
           transition={{ duration: 0.8, repeat: Infinity }}
           className="inline-block w-1 h-8 bg-purple-400 ml-1"
         />

@@ -41,10 +41,10 @@ const skillsData = [
       { name: 'REST APIs', level: 85 },
       { name: 'Firebase', level: 75 },
       { name: 'MongoDB', level: 80 },
-      { name: 'Mongoose', level: 75 },
       { name: 'JWT & Session Auth', level: 80 },
       { name: 'Prisma', level: 75 },
-      { name: 'PostgreSQL', level: 70 }
+      { name: 'PostgreSQL', level: 70 },
+      { name: 'SQL', level: 70 },
     ]
   },
   {

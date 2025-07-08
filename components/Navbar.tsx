@@ -35,13 +35,14 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map(item => item.href.slice(1));
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 150;
 
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            console.log('Navbar active section:', section);
             setActiveSection(section);
             break;
           }

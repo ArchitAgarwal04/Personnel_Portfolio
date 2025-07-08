@@ -12,6 +12,13 @@ export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isNameVisible, setIsNameVisible] = useState(true);
 
+  // Fix: Memoize the texts array for TypeWriter
+  const typewriterTexts = [
+    "CSE Undergrad",
+    "Web Developer",
+    "Competitive Programmer"
+  ];
+
   useEffect(() => {
     controls.start({ opacity: 1, y: 0 });
   }, [controls]);
@@ -70,7 +77,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex justify-center lg:justify-start"
           >
-            <div className="relative">
+            <div className="relative glass-card glow-effect mesh-gradient p-2 rounded-full">
               {/* Photo Frame with Glow Effect */}
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -79,26 +86,43 @@ export default function Hero() {
                 className="relative"
               >
                 {/* Outer Glow */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-2xl blur-xl opacity-30 animate-pulse" />
-                
+                <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-full blur-xl opacity-30 animate-pulse" />
                 {/* Frame */}
-                <div className="relative w-80 h-96 sm:w-96 sm:h-[450px] rounded-2xl overflow-hidden border-4 border-white/20 shadow-2xl">
+                <div className="relative w-80 h-80 sm:w-96 sm:h-96 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
                   <motion.img
                     src="/pic.jpg"
                     alt="Archit Agarwal"
-                    className="w-full h-full object-cover"
-                    initial={{ scale: 1.2, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.5 }}
+                    className="w-full h-full object-cover rounded-full border-4 border-white/30 shadow-xl"
+                    initial={{ scale: 1.05, opacity: 0, rotate: 0 }}
+                    animate={{
+                      scale: [1.05, 1.1, 1.05],
+                      y: [0, -10, 0],
+                      boxShadow: [
+                        "0 0 40px 10px rgba(139,92,246,0.4)",
+                        "0 0 60px 20px rgba(139,92,246,0.7)",
+                        "0 0 40px 10px rgba(139,92,246,0.4)"
+                      ],
+                      opacity: 1
+                    }}
+                    transition={{
+                      duration: 6,
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      ease: "easeInOut"
+                    }}
+                    whileHover={{
+                      scale: 1.15,
+                      rotateX: 10,
+                      rotateY: -10,
+                      boxShadow: "0 0 80px 30px rgba(139,92,246,0.8)"
+                    }}
                   />
-                  
                   {/* Hover Effect Overlay */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-purple-900/30 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"
+                    className="absolute inset-0 bg-gradient-to-t from-purple-900/30 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-full"
                     whileHover={{ opacity: 1 }}
                   />
                 </div>
-
                 {/* Floating Elements around Photo */}
                 <motion.div
                   animate={{
@@ -189,26 +213,7 @@ export default function Hero() {
               />
             </motion.div>
 
-            {/* TypeWriter */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 2.5 }}
-              className="mb-6"
-            >
-              <TypeWriter
-                texts={[
-                  "Full Stack Developer",
-                  "React Specialist",
-                  "UI/UX Designer",
-                  "Problem Solver",
-                  "Creative Thinker",
-                  "Tech Enthusiast"
-                ]}
-                className="text-2xl sm:text-3xl font-medium text-purple-400 justify-center lg:justify-start"
-              />
-            </motion.div>
-
+           
             {/* Animated Slogan */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

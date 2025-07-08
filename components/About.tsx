@@ -57,10 +57,10 @@ export default function About() {
             <span className="gradient-text">About Me</span>
           </h2>
           <p className="text-lg md:text-xl font-semibold text-white/80 mb-2">CSE Undergrad | Web Developer | Competitive Programmer</p>
-          <TypeWriter
+          {/* <TypeWriter
             texts={["Full Stack Developer", "Hackathon Finalist", "Mentor & Leader", "Open Source Contributor", "AI Explorer"]}
             className="text-xl sm:text-2xl font-medium text-purple-300 justify-center mt-2"
-          />
+          /> */}
         </div>
         {/* Thematic Cards */}
         <div className="grid gap-8">
